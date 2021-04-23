@@ -24,5 +24,32 @@ export const dogLinkCreator = () => {
 }
 
 let createDogs = dogLinkCreator();
-debugger
-console.log("hi");
+
+const attachDogLinks = () => {
+  let dogDropDownEle = document.getElementsByClassName("drop-down-dog-list")[0];
+  const dogLinks = dogLinkCreator();
+  dogLinks.forEach(function(dogLink) {
+    dogDropDownEle.appendChild(dogLink)
+  });
+}
+
+attachDogLinks();
+
+const handleEnter = () => {
+  let dogLis = document.getElementsByClassName("dog-link");
+  dogLis.forEach(function(dogLi) {
+    dogLi.classList.add("show")
+  });
+};
+
+const handleLeave = () => {
+  let dogLis = document.getElementsByClassName("dog-link");
+  dogLis.forEach(function (dogLi) {
+    dogLi.classList.remove("show")
+  });
+}
+
+let dogDropDownEle = document.getElementsByClassName("drop-down-dog-list")[0];
+
+dogDropDownEle.addEventListener("mouseenter", handleEnter);
+dogDropDownEle.addEventListener("mouseleave", handleLeave);
